@@ -1,6 +1,16 @@
 # microblogging
+![Logo](https://raw.githubusercontent.com/furlan100/microblogging/master/assets/logo.png)
 
-Um Blog do grupo Boticário
+Um Microblog feito para o grupo Boticário
+Feito Com Dart + Flutter
+Banco de Dados SQFlite
+BLOC
+DIO
+
+Para acessar o exemplo basta colocar o usuario e senha que cria ao iniciar o banco de dados
+usuario: furlan@boticario.com.br
+senha: senha
+
 
 ## Getting Started
 
