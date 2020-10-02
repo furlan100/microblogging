@@ -2,7 +2,7 @@ import 'dart:async';
 
 class LoginValidators {
   final validateEmail = StreamTransformer<String, String>.fromHandlers(handleData: (email, sink) {
-    if (email.contains("@") || email.length > 0) {
+    if (email.contains("@") && email.length > 0) {
       sink.add(email);
     } else {
       sink.addError("Informe um E-mail Válido");

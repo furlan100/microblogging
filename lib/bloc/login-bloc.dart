@@ -73,6 +73,8 @@ class LoginBloc extends BlocBase with LoginValidators {
             }
           }
           _stateController.add(LoginState.SUCCESS);
+        } else {
+          _stateController.add(LoginState.FAIL);
         }
       } else {
         _stateController.add(LoginState.FAIL);
