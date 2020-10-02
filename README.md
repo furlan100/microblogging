@@ -1,6 +1,8 @@
 # microblogging
 
-Um Blog do grupo Boticário
+Um Blog do grupo Boticário<br>
+Link para Baixar o APK https://raw.githubusercontent.com/furlan100/microblogging/master/app.apk <br>
+
 ![Logo](https://raw.githubusercontent.com/furlan100/microblogging/master/assets/logo.png)
 
 Um Microblog feito para o grupo Boticário
