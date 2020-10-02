@@ -13,19 +13,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Microblogging - Boticário',
-      theme: ThemeData(
-          primaryColor: Colors.black
-      ),
-      home: MyHomePage(
-        title: 'Microblogging - Boticário',
-      ),
+      theme: ThemeData(primaryColor: Colors.black),
+      home: MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-  final String title;
+  MyHomePage({Key key});
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -39,17 +34,17 @@ class _MyHomePageState extends State<MyHomePage> {
       title: new Text(
         'Bem Vindo ao Microblogging \r\n '
         'Grupo Boticário \r\n '
-        'Desenvolvido : Guilherme Furlan \r\n '
+        'Desenvolvido por : Guilherme Furlan \r\n '
         'E-mail : furlan100@gmail.com \r\n'
         'WhatsApp : 49 9 9953-2934 \r\n',
         style: new TextStyle(
           fontWeight: FontWeight.bold,
-          fontSize: 20.0,
+          fontSize: 15.0,
         ),
         textAlign: TextAlign.center,
       ),
       image: Image.asset("assets/logo.png", fit: BoxFit.none),
-      photoSize: 150.0,
+      photoSize: 80.0,
       loaderColor: Colors.red,
       loadingText: Text("Carregando..."),
       gradientBackground: LinearGradient(

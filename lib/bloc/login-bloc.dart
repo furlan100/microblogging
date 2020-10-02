@@ -10,7 +10,6 @@ import 'package:dio/dio.dart';
 enum LoginState { IDLE, LOADING, SUCCESS, FAIL, FAILLOGIN }
 
 class LoginBloc extends BlocBase with LoginValidators {
-  final BaseOptions options = new BaseOptions(connectTimeout: 0);
   final _emailController = BehaviorSubject<String>();
   final _senhaController = BehaviorSubject<String>();
   final _stateController = BehaviorSubject<LoginState>();
@@ -45,20 +44,26 @@ class LoginBloc extends BlocBase with LoginValidators {
       List<Map<String, dynamic>> result = await db.getAll("config");
 
       if (result.isNotEmpty) {
-        List<Map<String, dynamic>> user = await db.select("user", "user = ? AND password = ? ", [_emailController.value, _senhaController.value]);
-
+        List<Map<String, dynamic>> user =
+            await db.select("user", "user = ? AND password = ? ", [_emailController.value.trim(), _senhaController.value]);
         if (user.length > 0) {
           List<User> list = user.map<User>((json) => User.fromJson(json)).toList();
 
           for (final e in list) {
-            preferences.setString("user", e.user);
-            preferences.setInt("id", e.id);
-            preferences.setString("name", e.name);
-
             var url = "${result[0]["url_api"]}data.json";
+
             Response response = await _sendGet(url);
             if (response.data['news'] != null) {
-              print(response.data['news']);
+              /*
+              * coloquei aqui para carregar o JSON
+              * não é o ideal
+              * mas simula uma req que teria que fazer no login
+              * */
+
+              preferences.setString("user", e.user);
+              preferences.setInt("id", e.id);
+              preferences.setString("name", e.name);
+
               var rest = response.data["news"] as List;
               List<News> list = rest.map<News>((json) => News.fromJsonWS(json)).toList();
               await db.deleteAll('news');
@@ -104,7 +109,7 @@ class LoginBloc extends BlocBase with LoginValidators {
 
   _sendGet(url) async {
     print(url);
-    var dio = Dio(options);
+    var dio = Dio();
     Response response = await dio.get(url);
     dio.close();
     return response;

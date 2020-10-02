@@ -5,7 +5,7 @@ import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart';
 
 class DatabaseHelper {
-  static final _databaseName = "database99.db";
+  static final _databaseName = "database.db";
   static final _databaseVersion = 1;
 
   // torna esta classe singleton
@@ -46,14 +46,12 @@ class DatabaseHelper {
 
     dc.onCreate().forEach((f) async {
       await db.execute(f);
+      print(f);
     });
   }
 
   Future _onUpgrade(Database db, int oldVersion, int newVersion) async {
-    print('Update Banco');
-    await db.rawQuery('UPDATE config SET url_api ="https://master.agr.br/cgi-bin/app-lote.pl/"');
     DataBaseCommands dc = DataBaseCommands();
-
     dc.onUpgrade().forEach((f) async {
       await db.execute(f);
     });

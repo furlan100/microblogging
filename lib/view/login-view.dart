@@ -127,7 +127,7 @@ class _LoginViewState extends State<LoginView> {
                           ),
                           onChanged: _loginBloc.changeEmail,
                           onSaved: _loginBloc.changeEmail,
-                          keyboardType: TextInputType.numberWithOptions(decimal: false),
+                          keyboardType: TextInputType.emailAddress,
                         ),
                         TextFormField(
                           decoration: InputDecoration(

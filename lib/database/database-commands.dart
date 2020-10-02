@@ -3,6 +3,7 @@ class DataBaseCommands {
   List<String> _onUpgrade = [];
 
   List<String> onCreate() {
+
     _onCreate.add("""CREATE TABLE IF NOT EXISTS config (
         id                    INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE NOT NULL,        
         url_api               VARCHAR   NOT NULL                     
